@@ -3,6 +3,8 @@ package de.sample.schulung.demo;
 import de.sample.schulung.daten.Person;
 import de.sample.schulung.daten.WitzigePerson;
 
+import java.util.Optional;
+
 public class HelloWorld {
 
     // kein const, kein readonly -> nur final
@@ -60,6 +62,14 @@ public class HelloWorld {
         p.setAge(32);
         int age = p.getAge();
         System.out.println(p.sayHello());
+
+        // kein Null Conditional Operator
+        String name = p != null ? p.getName() : "Tom";
+        name = Optional.ofNullable(p).map(Person::getName).orElse("Tom");
+
+        // Arrays sind in der Länge nicht veränderlich
+        int[] numbers = {1,5,7};
+
     }
 
 }
