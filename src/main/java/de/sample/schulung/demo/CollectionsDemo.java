@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class CollectionsDemo {
 
@@ -67,6 +69,15 @@ public class CollectionsDemo {
 
         }
         Collection<Integer> unmodifiables = Collections.unmodifiableCollection(numbers);
+
+        // Lamdba Expressions / Stream API
+        Collection<String> namen = Arrays.asList("Tom", "Julia", "Maximilian", "Josephine");
+        // ermittle alle kurzen Namen (<= 5 Zeichen) in Großbuchstaben
+        List<String> neueNamen = namen.stream()
+          .filter(name -> name.length() <= 5)
+          .map(String::toUpperCase)
+          .collect(Collectors.toList());
+        System.out.println(neueNamen);
 
     }
 
